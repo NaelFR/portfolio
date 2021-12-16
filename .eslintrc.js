@@ -25,5 +25,6 @@ module.exports = {
     'react/jsx-filename-extension': ['warn', { extensions: ['.tsx'] }],
     'react/jsx-props-no-spreading': 'off',
     'func-names': 'off',
+    'import/extensions': 'off',
   },
 };
