@@ -6,7 +6,8 @@ import { useRouter } from 'next/router';
 /**
  * A <Link> wrapper that knows if it's "active" or not.
  * Rip from https://github.com/ReactTraining/react-router/blob/v6.0.0-beta.0/packages/react-router-dom/index.tsx
- * However since they wont include the inactive class and style, here is the implementation, based on their NavLink
+ * However since they wont include the inactive class and style,
+ * here is the implementation, based on their NavLink
  * See https://github.com/ReactTraining/react-router/issues/7194
  */
 
@@ -52,8 +53,8 @@ const ActiveNavLink = function ({
   const className = [classNameProp, isActive ? activeClassName : inactiveClassName].filter(Boolean).join(' ');
   const style = { ...styleProp, ...(isActive ? activeStyle : inactiveStyle) };
   return (
-    <Link href={href} as={as} {...props}>
-      <span className={className} style={style}>
+    <Link href={href} as={as} {...props} passHref>
+      <button type="button" className={className} style={style}>
         {isActive && (
         <motion.div
           style={{ height: '2px', left: '50%', transform: 'translate(-50%, 0)!important' }}
@@ -63,7 +64,7 @@ const ActiveNavLink = function ({
         />
         )}
         {children}
-      </span>
+      </button>
     </Link>
   );
 };

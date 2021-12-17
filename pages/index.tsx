@@ -26,7 +26,7 @@ const Home: NextPage = function () {
       </div>
       <div className="relative hidden md:block">
         <div className="w-full h-auto shadow-[13px_11px_0px_0px_#FF8761]">
-          <Image src={heroPicture} layout="responsive" className="shadow-[13px_11px_0px_0px_#000000]" />
+          <Image src={heroPicture} layout="responsive" alt="Nael" />
         </div>
         <Dot className="" />
         <Dot className="bg-cyan w-1 h-1 right-9 -top-8" />

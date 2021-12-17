@@ -25,7 +25,7 @@ const ButtonLink: React.FC<ButtonLinkProps> = function ({
     className,
   ]);
   return (
-    <Link href={href}><div className={classNames}>{children}</div></Link>
+    <Link href={href} passHref><button type="button" className={classNames}>{children}</button></Link>
   );
 };
 
