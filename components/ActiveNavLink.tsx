@@ -33,7 +33,7 @@ const ActiveNavLink = function ({
   inactiveStyle,
   href,
   as,
-  exact,
+  exact = true,
   children,
   ...props
 }: ActiveNavLinkProps) {
@@ -57,8 +57,8 @@ const ActiveNavLink = function ({
       <button type="button" className={className} style={style}>
         {isActive && (
         <motion.div
-          style={{ height: '2px', left: '50%', transform: 'translate(-50%, 0)!important' }}
-          className="w-6 absolute bg-orange -bottom-2 left-1/2 -translate-x-1/2"
+          style={{ height: '2px' }}
+          className="w-6 absolute bg-orange -bottom-2 inset-x-0 mx-auto"
           layoutId="navigation-tabs-underline"
           transition={{ duration: 0.2 }}
         />

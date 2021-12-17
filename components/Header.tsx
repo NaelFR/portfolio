@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import logo from '../public/logo.svg';
@@ -10,6 +10,13 @@ import ActiveNavLink from './ActiveNavLink';
 
 const Header = function () {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (isMenuOpen && closeRef.current) {
+      closeRef.current.focus();
+    }
+  }, [isMenuOpen]);
   return (
     <header className="flex items-center justify-between px-4 md:px-10 py-6 z-20 relative">
       <Image width={68} height={33} src={logo.src} alt="logo" />
@@ -32,15 +39,27 @@ const Header = function () {
       >
         <div className="flex justify-between">
           <Image width={68} height={33} src={logo.src} alt="logo" />
-          <button type="button" onClick={() => setIsMenuOpen(false)}>
+          <button ref={closeRef} type="button" onClick={() => setIsMenuOpen(false)}>
             <Image width={24} height={24} src={close.src} alt="close" />
           </button>
         </div>
         <nav className="text-white mt-10 mb-4">
           <ul className="space-y-4">
-            <li>Home</li>
-            <li>Work</li>
-            <li>About me</li>
+            <li>
+              <ActiveNavLink href="/">
+                Home
+              </ActiveNavLink>
+            </li>
+            <li>
+              <ActiveNavLink href="/work">
+                Work
+              </ActiveNavLink>
+            </li>
+            <li>
+              <ActiveNavLink href="/about">
+                About me
+              </ActiveNavLink>
+            </li>
           </ul>
         </nav>
         <hr className="border border-white/[0.1]" />
